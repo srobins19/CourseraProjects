@@ -65,7 +65,7 @@ def get_pie_chart(entered_site):
                names='Launch Site',
                title='Successful launches by site')
   else:
-    filtered_df=filtered_df[filtered_df['Launch Site'==selected_site]]
+    filtered_df=filtered_df[filtered_df['Launch Site'==entered_site]]
     filtered_df=filtered_df.groupby(['Launch Site','class']).size().reset_index(name='class count')
     fig=px.pie(filtered_df,
                values='class count',
@@ -89,12 +89,12 @@ def get_scatter_chart(entered_site,payload_range):
                    color='Booster Version Category',
                    title='Payload and Success for All Sites')
   else:
-    filtered_df=filtered_df[filtered_df['Launch Site'==selected_site]]
+    filtered_df=filtered_df[filtered_df['Launch Site'==entered_site]]
     fig=px.scatter(filtered_df,
                    x='Payload Mass (kg)',
                    y='class',
                    color='Booster Version Category',
-                   title='Payload and Success for {}'.format(selected_site))
+                   title='Payload and Success for {}'.format(entered_site))
   return(fig)
 
 
