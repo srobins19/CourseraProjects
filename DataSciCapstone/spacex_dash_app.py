@@ -14,8 +14,6 @@ min_payload = spacex_df['Payload Mass (kg)'].min()
 # Create a dash application
 app = dash.Dash(__name__)
 
-labels=pd.unique(spacex_df['Launch Site'])
-
 # Create an app layout
 app.layout = html.Div(children=
     [html.H1('SpaceX Launch Records Dashboard',
@@ -61,7 +59,7 @@ app.layout = html.Div(children=
                                 
 def get_pie_chart(selected_site):
   filtered_df=spacex_df
-  if selected_site=='ALL':
+  if entered_site == 'ALL':
     fig=px.pie(filtered_df,
                values='class',
                names='Launch Site',
@@ -83,8 +81,8 @@ html.P("Payload range (Kg):"),
 
 def get_scatter_chart(selected_site,payload):
   filtered_df = spacex_df[(spacex_df['Payload Mass (kg)']>= payload_range[0]) &
-                            (spacex_df['Payload Mass (kg)']<= payload_range[1])]
-  if selected_site=='ALL':        
+    (spacex_df['Payload Mass (kg)']<= payload_range[1])]
+  if entered_site == 'ALL':        
     fig=px.scatter(filtered_df,
                    x='Payload Mass (kg)',
                    y='class',
