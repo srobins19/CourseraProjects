@@ -1,3 +1,6 @@
+#Note: This is the version from the TA, it looks extremely similar to my last version and I don't understand why this one works and that didn't.
+#Also what's with the title=f" " thing? That makes no sense. Maybe it indicates a formatted title
+
 # Import required libraries
 import pandas as pd
 import dash
