@@ -25,11 +25,12 @@ app.layout = html.Div(children=
     # TASK 1: Add a dropdown list to enable Launch Site selection
     # The default select value is for ALL sites
     dcc.Dropdown(id='site-dropdown', 
-        options=[{'label':'All sites','value':'ALL'},
-                 {'label': 'CCAFS LC-40', 'value': 'CCAFS LC-40'},
-                 {'label': 'VAFB SLC-4E', 'value': 'VAFB SLC-4E'},
-                 {'label': 'KSC LC-39A', 'value': 'KSC LC-39A'},
-                 {'label': 'CCAFS SLC-40', 'value': 'CCAFS SLC-40'}
+        options=[
+                {'label': 'All Sites', 'value': 'ALL'},
+                {'label': 'CCAFS LC-40', 'value': 'CCAFS LC-40'},
+                {'label': 'CCAFS SLC-40', 'value': 'CCAFS SLC-40'},
+                {'label': 'KSC LC-39A', 'value': 'KSC LC-39A'},
+                {'label': 'VAFB SLC-4E', 'value': 'VAFB SLC-4E'}
         ],
         value='ALL',
         placeholder='Select Launch Site',
@@ -43,8 +44,10 @@ app.layout = html.Div(children=
     html.P("Payload range (Kg):"),
     # TASK 3: Add a slider to select payload range
     dcc.RangeSlider(id='payload-slider',
-                    min=0, max=10000, step=1000,
-                    marks={0: '0', 100: '100'},
+                    min=0, 
+                    max=10000, 
+                    step=1000,
+                    marks={0: '0(Kg)',2500: '2500 (Kg)', 5000: '5000 (Kg)',7500: '7500 (Kg)', 10000: '10000 (Kg)'},
                     value=[min_payload, max_payload]
     ), 
                                 
