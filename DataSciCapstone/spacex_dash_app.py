@@ -57,7 +57,7 @@ app.layout = html.Div(children=
 @app.callback(Output(component_id='success-pie-chart',component_property='figure'),
               Input(component_id='site-dropdown',component_property='value'))
                                 
-def get_pie_chart(selected_site):
+def get_pie_chart(entered_site):
   filtered_df=spacex_df
   if entered_site == 'ALL':
     fig=px.pie(filtered_df,
@@ -79,7 +79,7 @@ html.P("Payload range (Kg):"),
 @app.callback(Output(component_id='success-payload-scatter-chart',component_property='figure'),
               [Input(component_id='site-dropdown',component_property='value'),Input(component_id='payload-slider',component_property='value')])
 
-def get_scatter_chart(selected_site,payload):
+def get_scatter_chart(entered_site,payload_range):
   filtered_df = spacex_df[(spacex_df['Payload Mass (kg)']>= payload_range[0]) &
     (spacex_df['Payload Mass (kg)']<= payload_range[1])]
   if entered_site == 'ALL':        
